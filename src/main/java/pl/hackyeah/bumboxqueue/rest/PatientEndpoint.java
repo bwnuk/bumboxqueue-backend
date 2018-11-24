@@ -53,14 +53,13 @@ public class PatientEndpoint {
     log.debug("Received PUT request modifyPatient");
     PatientOutputDto result = patientService.modifyPatient(id, patientInputDto);
     log.info("Returned result={}", result);
-
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
   @DeleteMapping(value = "/{id}")
-  public void deletePatient(@PathVariable Long id){
+  public ResponseEntity<Void> deletePatient(@PathVariable Long id){
     log.debug("Received DELETE request deletePatient");
     patientService.deletePatient(id);
-    log.info("Returned result={}", HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
