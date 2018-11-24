@@ -8,5 +8,5 @@ import lombok.Data;
 public class ErrorDto {
 
   private String message;
-  private ServiceErrorCode serviceErrorCode;
+  private ServiceErrorCode error;
 }
