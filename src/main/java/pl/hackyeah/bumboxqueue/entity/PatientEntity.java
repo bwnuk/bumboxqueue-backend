@@ -1,15 +1,14 @@
 package pl.hackyeah.bumboxqueue.entity;
 
 
-public class PatientEntity {
-
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="patient")
 public class PatientEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
