@@ -1,5 +1,6 @@
 package pl.hackyeah.bumboxqueue.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.hackyeah.bumboxqueue.converter.Mapper;
 import pl.hackyeah.bumboxqueue.dto.input.PatientInputDto;
@@ -13,6 +14,7 @@ import pl.hackyeah.bumboxqueue.repository.PatientRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class PatientService {
   private final PatientRepository patientRepository;
