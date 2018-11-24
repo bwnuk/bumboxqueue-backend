@@ -23,9 +23,9 @@ public class VisitService {
     }
 
     public VisitOutputDto saveVisit(VisitInputDto visitInputDto){
-        if((visitRepository.findByStartTime(visitInputDto.getStartTime(), visitInputDto.getDate()).isPresent()
-                || visitRepository.findByEndTime(visitInputDto.getEndTime(), visitInputDto.getDate()).isPresent())
-                && visitRepository.findByIdDctor(visitInputDto.getIdDoctor()).isPresent()){
+        if((visitRepository.findByStartTimeAndDate(visitInputDto.getStartTime(), visitInputDto.getDate()).isPresent()
+                || visitRepository.findByEndTimeAndDate(visitInputDto.getEndTime(), visitInputDto.getDate()).isPresent())
+                && visitRepository.findByIdDoctor(visitInputDto.getIdDoctor()).isPresent()){
             throw new BadRequestException(String.format("Doctor  has already visit at this time"),
                     ServiceErrorCode.DOCTOR_HAS_ALREADY_VISIT);
         }
