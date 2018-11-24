@@ -22,6 +22,7 @@ import pl.hackyeah.bumboxqueue.service.PatientService;
 @RestController
 @RequestMapping("/api/patients")
 public class PatientEndpoint {
+
   private final PatientService patientService;
 
   public PatientEndpoint(PatientService patientService) {
@@ -29,7 +30,8 @@ public class PatientEndpoint {
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<PatientOutputDto> savePatient(@RequestBody PatientInputDto patientInputDto) {
+  public ResponseEntity<PatientOutputDto> savePatient(
+      @RequestBody PatientInputDto patientInputDto) {
     log.debug("Received POST request savePatient");
     PatientOutputDto result = patientService.savePatient(patientInputDto);
     log.info("Returned result={}", result);

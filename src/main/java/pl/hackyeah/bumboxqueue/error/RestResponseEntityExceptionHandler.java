@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @Slf4j
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
   private ErrorDto createError(String message, ServiceErrorCode serviceErrorCode) {
     return new ErrorDto(message, serviceErrorCode);
   }

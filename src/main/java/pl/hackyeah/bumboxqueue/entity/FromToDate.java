@@ -5,6 +5,7 @@ import pl.hackyeah.bumboxqueue.error.BadRequestException;
 
 @Data
 public class FromToDate {
+
   private HourMinute from;
   private HourMinute to;
 

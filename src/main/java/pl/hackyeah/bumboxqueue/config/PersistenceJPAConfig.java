@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-public class PersistenceJPAConfig{
+public class PersistenceJPAConfig {
 
   @Bean
-  public PlatformTransactionManager transactionManager(){
+  public PlatformTransactionManager transactionManager() {
     JpaTransactionManager transactionManager
         = new JpaTransactionManager();
     return transactionManager;

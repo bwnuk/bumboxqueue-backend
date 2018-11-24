@@ -5,6 +5,7 @@ import pl.hackyeah.bumboxqueue.repository.DoctorRepository;
 
 @Service
 public class DoctorService {
+
   private final DoctorRepository doctorRepository;
 
   public DoctorService(DoctorRepository doctorRepository) {

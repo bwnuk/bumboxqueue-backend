@@ -9,6 +9,7 @@ import pl.hackyeah.bumboxqueue.service.DoctorService;
 @RestController
 @RequestMapping("/api/doctors")
 public class DoctorEndpoint {
+
   private final DoctorService doctorService;
 
   public DoctorEndpoint(DoctorService doctorService) {

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public class ServiceException extends RuntimeException {
+
   private final HttpStatus httpStatus;
   private final ServiceErrorCode serviceErrorCode;
 

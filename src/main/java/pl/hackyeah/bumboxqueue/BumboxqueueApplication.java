@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BumboxqueueApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BumboxqueueApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(BumboxqueueApplication.class, args);
+  }
 }
