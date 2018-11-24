@@ -1,5 +1,9 @@
 package pl.hackyeah.bumboxqueue.entity;
 
+
+public class PatientEntity {
+
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
