@@ -1,22 +1,17 @@
 package pl.hackyeah.bumboxqueue.rest;
 
-
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.hackyeah.bumboxqueue.service.DoctorService;
 
 @Slf4j
-@RequestMapping("/api")
 @RestController
+@RequestMapping("/api/doctor")
 public class DoctorEndpoint {
+  private final DoctorService doctorService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> dupa() {
-        log.info("Dasdas");
-        return new ResponseEntity("dupa", HttpStatus.OK);
-    }
+  public DoctorEndpoint(DoctorService doctorService) {
+    this.doctorService = doctorService;
+  }
 }
