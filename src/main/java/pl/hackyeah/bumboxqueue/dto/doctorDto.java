@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.Null;
 
 @Data
-public class doctorDto {
+public class DoctorDto {
     private String name;
     private String surname;
     public String specialization;
