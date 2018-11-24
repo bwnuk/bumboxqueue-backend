@@ -7,11 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-<<<<<<< HEAD
-class zBumboxqueueApplicationTests {
-=======
 public class BumboxqueueApplicationTests {
->>>>>>> Implement HistoryEntity
 
 	@Test
 	public void contextLoads() {
