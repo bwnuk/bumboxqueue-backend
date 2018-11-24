@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 
 
 @Data
-public class doctor {
+public class DoctorEntity {
     @Id
     private int id;
     public String name;

@@ -4,6 +4,7 @@ public enum ServiceErrorCode {
   CONNECTION_FAILED(1),
   INVALID_TIME_SYNTAX(2);
 
+
   private int code;
 
 
