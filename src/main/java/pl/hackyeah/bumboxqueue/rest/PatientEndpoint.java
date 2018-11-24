@@ -9,7 +9,6 @@ import pl.hackyeah.bumboxqueue.dto.input.PatientInputDto;
 import pl.hackyeah.bumboxqueue.dto.output.PatientOutputDto;
 import pl.hackyeah.bumboxqueue.service.PatientService;
 
-import javax.print.attribute.standard.Media;
 import java.util.List;
 
 @Slf4j
