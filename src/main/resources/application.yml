@@ -1,2 +1,12 @@
 server:
   port: 8013
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/queue
+    username: example
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: create
