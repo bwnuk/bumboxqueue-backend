@@ -1,7 +1,5 @@
 package pl.hackyeah.bumboxqueue.entity;
 
-
-import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import lombok.Data;
@@ -10,6 +8,7 @@ import lombok.Data;
 @Entity
 @Table(name="patient")
 public class PatientEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
