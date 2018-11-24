@@ -1,4 +1,4 @@
-package pl.hackyeah.bumboxqueue.dto;
+package pl.hackyeah.bumboxqueue.dto.input;
 
 import lombok.Data;
 import pl.hackyeah.bumboxqueue.entity.GenderType;
@@ -7,7 +7,7 @@ import pl.hackyeah.bumboxqueue.error.ServiceErrorCode;
 
 
 @Data
-public class PatientDto {
+public class PatientInputDto {
     private String firstName;
     private String lastName;
     private String pesel;

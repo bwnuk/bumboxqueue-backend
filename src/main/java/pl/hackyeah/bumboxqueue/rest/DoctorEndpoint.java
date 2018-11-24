@@ -7,7 +7,7 @@ import pl.hackyeah.bumboxqueue.service.DoctorService;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/doctor")
+@RequestMapping("/api/doctors")
 public class DoctorEndpoint {
   private final DoctorService doctorService;
 
