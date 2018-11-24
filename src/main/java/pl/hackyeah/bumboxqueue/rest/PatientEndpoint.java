@@ -27,6 +27,7 @@ public class PatientEndpoint {
     log.debug("Received POST request savePatient");
     PatientOutputDto result = patientService.savePatient(patientInputDto);
     log.info("Returned result={}", result);
+
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
@@ -35,7 +36,23 @@ public class PatientEndpoint {
     log.debug("Received GET request findAll");
     List<PatientOutputDto> result = patientService.findAll();
     log.info("Returned result={}", result);
+
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
+  @PutMapping(value = "/{id}")
+  public ResponseEntity<PatientOutputDto> modifyPatient(@PathVariable Long id, @RequestBody PatientInputDto patientInputDto){
+    log.debug("Received PUT request modifyPatient");
+    PatientOutputDto result = patientService.modifyPatient(id, patientInputDto);
+    log.info("Returned result={}", result);
+
+    return new ResponseEntity<>(result, HttpStatus.OK);
+  }
+
+  @DeleteMapping(value = "/{id}")
+  public void deletePatient(@PathVariable Long id){
+    log.debug("Received DELETE request deletePatient");
+    patientService.deletePatient(id);
+    log.info("Returned result={}", HttpStatus.NO_CONTENT);
+  }
 }
