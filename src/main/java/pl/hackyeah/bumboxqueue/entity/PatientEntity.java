@@ -23,9 +23,9 @@ public class PatientEntity {
 
     @Column(nullable = false)
     @Size(min = 1)
-    private String sex;
+    private String gender;
 
     @Column
-    @Size(min = 1)
-    private long pesel;
+    @Size(min =11)
+    private String pesel;
 }
