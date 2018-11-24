@@ -46,7 +46,7 @@ public class PatientEndpoint {
     PatientOutputDto result = patientService.modifyPatient(id, patientInputDto);
     log.info("Returned result={}", result);
 
-    return new ResponseEntity<>(result, HttpStatus.CREATED);
+    return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
   @DeleteMapping(value = "/{id}")
