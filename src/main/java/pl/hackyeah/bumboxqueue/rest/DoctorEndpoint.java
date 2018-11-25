@@ -42,10 +42,10 @@ public class DoctorEndpoint {
 
     @PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}")
-    public void deleteById() {
+    public void deleteById(@PathVariable Long id) {
         log.debug("Received Delete request");
-        doctorService.deleteDoctor(1l); //todo
-
+        doctorService.deleteDoctor(id);
+        log.info("Doctor Deleted {}", id);
     }
 
 }
