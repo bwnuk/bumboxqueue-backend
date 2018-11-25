@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.hackyeah.bumboxqueue.dto.input.PatientInputDto;
 import pl.hackyeah.bumboxqueue.dto.output.PatientOutputDto;
@@ -21,12 +22,12 @@ public class PatientEndpoint {
     this.patientService = patientService;
   }
 
+  @PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<PatientOutputDto> savePatient(@RequestBody PatientInputDto patientInputDto) {
     log.debug("Received POST request savePatient");
     PatientOutputDto result = patientService.savePatient(patientInputDto);
     log.info("Returned result={}", result);
-
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
@@ -44,7 +45,6 @@ public class PatientEndpoint {
     log.debug("Received GET request findAll");
     List<PatientOutputDto> result = patientService.findAll();
     log.info("Returned result={}", result);
-
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
@@ -57,6 +57,7 @@ public class PatientEndpoint {
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
+  @PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
   @DeleteMapping(value = "/{id}")
   public void deletePatient(@PathVariable Long id){
     log.debug("Received DELETE request deletePatient");

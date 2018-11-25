@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.hackyeah.bumboxqueue.dto.input.DoctorInputDto;
 import pl.hackyeah.bumboxqueue.dto.output.DoctorOutputDto;
@@ -22,6 +23,7 @@ public class DoctorEndpoint {
         this.doctorService = doctorService;
     }
 
+    @PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DoctorOutputDto> saveDoctor(@RequestBody DoctorInputDto doctorInputDto) {
         log.debug("Received POST request saveDoctor");
@@ -38,11 +40,12 @@ public class DoctorEndpoint {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}")
-    public void deleteById() {
+    public void deleteById(@PathVariable Long id) {
         log.debug("Received Delete request");
-        doctorService.deleteDoctor(1l); //todo
-
+        doctorService.deleteDoctor(id);
+        log.info("Doctor Deleted {}", id);
     }
 
 }
