@@ -33,6 +33,15 @@ public class PatientService {
     return mapper.map(patientEntity, PatientOutputDto.class);
   }
 
+  public PatientOutputDto getPatient(Long id){
+    Optional<PatientEntity> patient = patientRepository.findById(id);
+    if(!patient.isPresent()){
+      throw new NotFoundException(String.format("Patient with id %s does not exist", id), ServiceErrorCode
+              .PATIENT_NOT_FOUND);
+    }
+    return mapper.map(patient, PatientOutputDto.class);
+  }
+
   public List<PatientOutputDto> findAll() {
     return mapper.mapToList(patientRepository.findAll(), PatientOutputDto.class);
   }

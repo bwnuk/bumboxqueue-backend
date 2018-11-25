@@ -10,7 +10,6 @@ import pl.hackyeah.bumboxqueue.dto.input.PatientInputDto;
 import pl.hackyeah.bumboxqueue.dto.output.PatientOutputDto;
 import pl.hackyeah.bumboxqueue.service.PatientService;
 
-import javax.print.attribute.standard.Media;
 import java.util.List;
 
 @Slf4j
@@ -30,6 +29,15 @@ public class PatientEndpoint {
     PatientOutputDto result = patientService.savePatient(patientInputDto);
     log.info("Returned result={}", result);
     return new ResponseEntity<>(result, HttpStatus.CREATED);
+  }
+
+  @GetMapping(value = "/{id}")
+  public ResponseEntity<PatientOutputDto> getPatient(@PathVariable Long id){
+    log.debug("Received GET request getPatient");
+    PatientOutputDto result = patientService.getPatient(id);
+    log.info("Returned result={}", result);
+
+    return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
