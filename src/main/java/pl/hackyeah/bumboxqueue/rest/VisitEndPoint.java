@@ -31,6 +31,15 @@ public class VisitEndPoint {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<VisitOutputDto>getVisit(Long id){
+        log.debug("Received GET request getVisit");
+        VisitOutputDto result = visitService.getVisit(id);
+        log.info("Returned result={}", result);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<VisitOutputDto>>findAll(){
         log.debug("Received GET request findAll");

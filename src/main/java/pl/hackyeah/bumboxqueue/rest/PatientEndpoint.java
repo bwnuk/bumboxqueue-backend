@@ -30,6 +30,15 @@ public class PatientEndpoint {
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
+  @GetMapping(value = "/{id}")
+  public ResponseEntity<PatientOutputDto> getPatient(@PathVariable Long id){
+    log.debug("Received GET request getPatient");
+    PatientOutputDto result = patientService.getPatient(id);
+    log.info("Returned result={}", result);
+
+    return new ResponseEntity<>(result, HttpStatus.OK);
+  }
+
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<List<PatientOutputDto>> findAll() {
     log.debug("Received GET request findAll");

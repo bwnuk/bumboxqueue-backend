@@ -8,9 +8,9 @@ public enum ServiceErrorCode {
     PATIENT_NOT_FOUND(5),
     DOCTOR_ALREADY_EXISTED(6),
     SPECIALIZATION_DOES_NOT_EXIST(7),
-    DOCTOR_HAS_ALREADY_VISIT(8),
-    VISIT_NOT_FOUND(9),
-    WRONG_TIME(10);
+    DOCTOR_HAS_ALREADY_VISIT(10),
+    VISIT_NOT_FOUND(11),
+    WRONG_TIME(12);
 
     private int code;
 

@@ -11,6 +11,7 @@ import pl.hackyeah.bumboxqueue.error.ServiceErrorCode;
 import pl.hackyeah.bumboxqueue.repository.VisitRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VisitService {
@@ -26,12 +27,21 @@ public class VisitService {
         if((visitRepository.findByStartTimeAndDate(visitInputDto.getStartTime(), visitInputDto.getDate()).isPresent()
                 || visitRepository.findByEndTimeAndDate(visitInputDto.getEndTime(), visitInputDto.getDate()).isPresent())
                 && visitRepository.findByIdDoctor(visitInputDto.getIdDoctor()).isPresent()){
-            throw new BadRequestException(String.format("Doctor  has already visit at this time"),
+            throw new BadRequestException(String.format("Visit  has already visit at this time"),
                     ServiceErrorCode.DOCTOR_HAS_ALREADY_VISIT);
         }
         visitInputDto.validate();
         VisitEntity visitEntity = visitRepository.save(mapper.map(visitInputDto, VisitEntity.class));
         return mapper.map(visitEntity, VisitOutputDto.class);
+    }
+
+    public VisitOutputDto getVisit(Long id){
+        Optional<VisitEntity> visit = visitRepository.findById(id);
+        if(!visit.isPresent()) {
+            throw new NotFoundException(String.format("Visit with id %s does not exist", id), ServiceErrorCode
+                    .PATIENT_NOT_FOUND);
+        }
+        return mapper.map(visit, VisitOutputDto.class);
     }
 
     public List<VisitOutputDto> findAll(){
