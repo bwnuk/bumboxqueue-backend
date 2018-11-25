@@ -45,7 +45,7 @@ public class DoctorEndpoint {
     public void deleteById(@PathVariable Long id) {
         log.debug("Received Delete request");
         doctorService.deleteDoctor(id);
-
+        log.info("Doctor Deleted {}", id);
     }
 
 }

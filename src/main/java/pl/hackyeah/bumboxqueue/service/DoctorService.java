@@ -28,14 +28,17 @@ public class DoctorService {
         this.specializationRepository = specializationRepository;
     }
 
-    public Optional<DoctorEntity> getDoctorByPesel(String pesel) {
-        return doctorRepository.findByPesel(pesel);
+    public DoctorEntity getDoctorByPesel(String pesel) {
+        Optional<DoctorEntity> doctorEntity = doctorRepository.findByPesel(pesel);
+        if (!doctorEntity.isPresent())
+            throw new BadRequestException(String.format("Doctor with pesel=%s does not exist", pesel), ServiceErrorCode.DOCTOR_NOT_FOUND);
+        return doctorEntity.get();
     }
 
     public DoctorOutputDto saveDoctor(DoctorInputDto doctorInputDto) {
         String pesel = doctorInputDto.getPesel();
         if (doctorRepository.findByPesel(pesel).isPresent()) {
-            throw new BadRequestException(String.format("Doctor with pesel=%s is existed", pesel), ServiceErrorCode.DOCTOR_ALREADY_EXISTED);
+            throw new BadRequestException(String.format("Doctor with pesel=%s exists", pesel), ServiceErrorCode.DOCTOR_ALREADY_EXISTED);
         }
         List<SpecializationEntity> specializations = specializationValidation(doctorInputDto.getSpecialization());
         DoctorEntity doctor = mapper.map(doctorInputDto, DoctorEntity.class);

@@ -40,5 +40,6 @@ public class SpecializationEndpoint {
     public void deleteById(@PathVariable Long id) {
         log.debug("Received Delete request");
         specializationService.deleteSpecialization(id);
+        log.info("Deleted specialization with id {}", id);
     }
 }
